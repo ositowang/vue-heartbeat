@@ -15,7 +15,7 @@
       <div v-else>
         <slot name="off">&#x2716;</slot>
       </div>
-      <slot/>
+      <slot />
     </div>
     <div class="pulse-2" :class="[{off:state==='Off'}]"></div>
   </div>
@@ -52,16 +52,16 @@ export default {
       const animationInner = Math.round(width / 2.2);
       const animationOuter = Math.round(width / 1.3);
       let variables = {
-        "--circle-width": convertToUnit(this.width),
-        "--animation-color": "27, 201, 142",
+        "--heartbeat-width": convertToUnit(this.width),
+        "--heartbeat-color": "27, 201, 142",
         "--heartbeat-inner": convertToUnit(animationInner),
         "--heartbeat-outer": convertToUnit(animationOuter)
       };
 
       if (this.state === "Off") {
-        variables["--animation-color"] = "112,120,133";
+        variables["--heartbeat-color"] = "112,120,133";
       } else if (this.state === "Danger") {
-        variables["--animation-color"] = "230,71,89";
+        variables["--heartbeat-color"] = "230,71,89";
       }
       return variables;
     },
@@ -75,16 +75,16 @@ export default {
 <style lang="scss" scoped>
 .pulse-wrapper {
   position: relative;
-  width: var(--circle-width);
-  height: var(--circle-width);
+  width: var(--heartbeat-width);
+  height: var(--heartbeat-width);
 }
 .pulse {
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--circle-width);
-  height: var(--circle-width);
+  width: var(--heartbeat-width);
+  height: var(--heartbeat-width);
   border-radius: 50%;
   background-color: #1bc98e;
   color: #252830;
@@ -106,11 +106,11 @@ export default {
 
 .pulse-2 {
   position: absolute;
-  width: var(--circle-width);
-  height: var(--circle-width);
+  width: var(--heartbeat-width);
+  height: var(--heartbeat-width);
   border-radius: 50%;
   background-color: #1bc98e;
-  box-shadow: 0 0 0 rgba(var(--animation-color), 0.25);
+  box-shadow: 0 0 0 rgba(var(--heartbeat-color), 0.25);
   animation-name: pulse-2;
   animation-duration: 2s;
   animation-iteration-count: infinite;
@@ -123,33 +123,33 @@ export default {
 
 @keyframes pulse-1 {
   0% {
-    -moz-box-shadow: 0 0 0 0 rgba(var(--animation-color), 0.25);
-    box-shadow: 0 0 0 0 rgba(var(--animation-color), 0.25);
+    -moz-box-shadow: 0 0 0 0 rgba(var(--heartbeat-color), 0.25);
+    box-shadow: 0 0 0 0 rgba(var(--heartbeat-color), 0.25);
   }
   70% {
     -moz-box-shadow: 0 0 0 var(--heartbeat-outer)
-      rgba(var(--animation-color), 0);
-    box-shadow: 0 0 0 var(--heartbeat-outer) rgba(var(--animation-color), 0);
+      rgba(var(--heartbeat-color), 0);
+    box-shadow: 0 0 0 var(--heartbeat-outer) rgba(var(--heartbeat-color), 0);
   }
   100% {
-    -moz-box-shadow: 0 0 0 0 rgba(var(--animation-color), 0);
-    box-shadow: 0 0 0 0 rgba(var(--animation-color), 0);
+    -moz-box-shadow: 0 0 0 0 rgba(var(--heartbeat-color), 0);
+    box-shadow: 0 0 0 0 rgba(var(--heartbeat-color), 0);
   }
 }
 
 @keyframes pulse-2 {
   0% {
-    -moz-box-shadow: 0 0 0 0 rgba(var(--animation-color), 0.25);
-    box-shadow: 0 0 0 0 rgba(var(--animation-color), 0.25);
+    -moz-box-shadow: 0 0 0 0 rgba(var(--heartbeat-color), 0.25);
+    box-shadow: 0 0 0 0 rgba(var(--heartbeat-color), 0.25);
   }
   70% {
     -moz-box-shadow: 0 0 0 var(--heartbeat-inner)
-      rgba(var(--animation-color), 0);
-    box-shadow: 0 0 0 var(--heartbeat-inner) rgba(var(--animation-color), 0);
+      rgba(var(--heartbeat-color), 0);
+    box-shadow: 0 0 0 var(--heartbeat-inner) rgba(var(--heartbeat-color), 0);
   }
   100% {
-    -moz-box-shadow: 0 0 0 0 rgba(var(--animation-color), 0);
-    box-shadow: 0 0 0 0 rgba(var(--animation-color), 0);
+    -moz-box-shadow: 0 0 0 0 rgba(var(--heartbeat-color), 0);
+    box-shadow: 0 0 0 0 rgba(var(--heartbeat-color), 0);
   }
 }
 </style>

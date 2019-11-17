@@ -1,12 +1,22 @@
-import { use, registerComponent } from "../utils";
 import HeartBeat from "./HeartBeat.vue";
+export function install(Vue) {
+  if (install.installed) return;
+  install.installed = true;
+  Vue.component(HeartBeat.name, HeartBeat);
+}
 
-const Plugin = {
-  install(Vue) {
-    registerComponent(Vue, HeartBeat);
-  }
+const plugin = {
+  install
 };
 
-use(Plugin);
+let GlobalVue = null;
+if (typeof window !== "undefined") {
+  GlobalVue = window.Vue;
+} else if (typeof global !== "undefined") {
+  GlobalVue = global.Vue;
+}
+if (GlobalVue) {
+  GlobalVue.use(plugin);
+}
 
-export default Plugin;
+export default HeartBeat;

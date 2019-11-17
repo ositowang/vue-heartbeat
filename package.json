@@ -2,11 +2,34 @@
   "name": "vue-heartbeat",
   "version": "0.1.0",
   "private": false,
+  "description": "a heartbeat with configurable content for monitoring or detecting",
+  "author": "ositowang <ositowang@gmail.com>",
+  "repository": "https://github.com/ositowang/vue-heartbeat",
+  "license": "MIT",
+  "main": "dist/heartbeat.common.js",
+  "engines": {
+    "node": ">= 4.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "keywords": [
+    "vue",
+    "components",
+    "vuejs",
+    "monitoring"
+  ],
+  "files": [
+    "src",
+    "dist"
+  ],
+  "peerDependencies": {
+    "vue": "^2.5.0"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build":"vue-cli-service build --target lib --inline-vue --name heartbeat ./src/heartbeat/index.js",
+    "build": "vue-cli-service build --target lib --name heartbeat ./src/heartbeat/index.js",
     "lint": "vue-cli-service lint",
-    "test": "npm run lint & vue-cli-service test:unit"
+    "test": "npm run lint & npm run jest:update & vue-cli-service test:unit",
+    "jest:update": "jest -u"
   },
   "dependencies": {
     "core-js": "^3.3.2",
@@ -27,6 +50,13 @@
     "sass-loader": "^8.0.0",
     "vue-template-compiler": "^2.6.10"
   },
+  "lint-staged": {
+    "*.{vue,js}": [
+      "lint --fix",
+      "git add"
+    ]
+  },
+  "pre-commit": "lint:staged",
   "eslintConfig": {
     "root": true,
     "plugins": [
